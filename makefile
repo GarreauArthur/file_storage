@@ -1,7 +1,7 @@
 # move libs to /usr/local/lib in production
 
 CXX = g++
-CXXFLAGS = -flto -O3 -std=c++17
+CXXFLAGS = -flto -O3 -std=c++17 -g
 LDFLAGS = 
 SRCDIR = src
 BUILDDIR = build
@@ -10,7 +10,7 @@ INCLUDEDIR = include
 SRC = $(shell find $(SRCDIR) -type f -name *.cpp -printf "%f ")
 OBJ = $(SRC:.cpp=.o) # like SRC but .o instead of .cpp
 LIB = -lz -lpthread
-INC =-I$(INCLUDEDIR)
+INC =-I$(INCLUDEDIR) -Ilib
 EXEC = server
 SOURCES = $(wildcard $(SRCDIR)/*.cpp)
 OBJECTS = $(patsubst $(SRCDIR)/%.cpp, $(BUILDDIR)/%.o, $(SOURCES))
